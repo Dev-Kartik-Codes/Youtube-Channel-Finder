@@ -80,9 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             currentQuery = query;
             resultsList.innerHTML = '<p style="text-align:center; padding: 2rem;">Loading...</p>';
             const data = await fetchChannels(query);
+            if (data) { // <-- ADD THIS CHECK
             renderChannels(data.items);
-            nextPageToken = data.nextPageToken;
+            nextPageToken = data.nextPageToken; 
             loadMoreBtn.style.display = nextPageToken ? 'inline-flex' : 'none';
+            }
         }
     };
 
